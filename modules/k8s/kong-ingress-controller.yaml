@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kong-ingress-controller
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kong-ingress-controller
+  template:
+    metadata:
+      labels:
+        app: kong-ingress-controller
+    spec:
+      containers:
+        - name: kong-ingress-controller
+          image: kong/kubernetes-ingress-controller:latest
+          env:
+            - name: KONG_ADMIN_LISTEN
+              value: "0.0.0.0:8444"
+            - name: KONG_PROXY_LISTEN
+              value: "0.0.0.0:8000"

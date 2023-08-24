@@ -1,0 +1,6 @@
+# Ignorar archivos de estado de Terraform
+*.tfstate
+*.tfstate.*
+
+# Ignorar archivos de bloqueo de configuración de Terraform
+*.lock.hcl
